@@ -26,7 +26,7 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -35,9 +35,16 @@ class ProviderController extends Controller
      * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function show(Provider $provider)
+    public function show($name)
     {
-        return $provider;
+        $provider=Provider::where('name', '=', $name)->firstOrFail(); 
+        if (!$provider)
+		{
+			// Se devuelve un array errors con los errores encontrados y cabecera HTTP 404.
+			// En code podríamos indicar un código de error personalizado de nuestra aplicación si lo deseamos.
+			return response()->json(['errors'=>array(['code'=>404,'message'=>'No se encuentra un fabricante con ese código.'])],404);
+		}
+        return response()->json(['status'=>'ok','data'=>$provider],200);
     }
 
     /**
