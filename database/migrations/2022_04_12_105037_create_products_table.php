@@ -15,8 +15,15 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-        });
+            $table->string('reference_number');
+            $table->int('cuantity');
+            $table->float('cost_price');
+            $table->string('name');
+            $table->string('id_provider');
+            
+    
+            $table->foreign('id_provider')->refrences('provider_id')->on('providers');
+            });
     }
 
     /**

@@ -4,8 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class product extends Model
+class Provider extends Eloquent 
 {
     use HasFactory;
+
+    public $fillable = [
+        'name',
+    ];
 }

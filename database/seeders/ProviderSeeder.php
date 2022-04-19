@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Provider;
+use App\Models\Product;
+
 
 class ProviderSeeder extends Seeder
 {
@@ -13,6 +16,7 @@ class ProviderSeeder extends Seeder
      */
     public function run()
     {
-        //
-    }
+        Provider::factory(3)->create();
+
+    } 
 }
