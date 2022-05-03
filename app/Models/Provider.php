@@ -13,4 +13,8 @@ class Provider extends Eloquent
     public $fillable = [
         'name',
     ];
+
+    public function products() {
+        return $this->hasMany(Product::class);
+    }
 }

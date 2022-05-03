@@ -17,4 +17,8 @@ class CostPrice extends Eloquent
         'quantity',
         'cost',
     ];
+
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
 }

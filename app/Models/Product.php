@@ -13,9 +13,13 @@ class Product extends Eloquent
     public $fillable = [
         'id',
         'reference_number',
-        'cuantity',
+        'quantity',
         'cost_price',
         'name',
         'id_provider',
     ];
+
+    public function provider() {
+        return $this->belongsTo(Provider::class);
+    }
 }

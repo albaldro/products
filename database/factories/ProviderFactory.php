@@ -15,6 +15,7 @@ class ProviderFactory extends Factory
     public function definition()
     {
         return [
+            'providerid' => $this->faker->unique()->uuid(),
             'name' => $this->faker->name(),
         ];
     }

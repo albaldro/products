@@ -21,9 +21,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->text(10),
             'reference_number' => $this->faker->bothify('??####'),
-            'cuantity' => $this->faker->randomNumber(3),
-            'cost_price' => $this->faker->randomFloat(2, 0, 100),
-            'id_provider' => $this->faker->randomElement(DB::table('providers')->pluck('_id')),
+            'id_provider' => $this->faker->randomElement(Provider::all()->pluck('_id')->toArray()),
         ];
     }
 }

@@ -17,4 +17,8 @@ class SellPrice extends Eloquent
         'quantity',
         'price',
     ];
+
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
 }
