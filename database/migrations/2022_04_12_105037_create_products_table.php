@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('reference_number');
             $table->string('name');
             $table->string('id_provider');
+            $table->softDeletes();
             
     
             $table->foreign('id_provider')->refrences('_id')->on('providers');

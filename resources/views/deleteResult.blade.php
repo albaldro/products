@@ -5,7 +5,7 @@
     </head>
     <body class="text-center mt-5 text-2xl">
 
-        <p>User modified!</p>
+        <p>User deleted!</p>
          <a class=" text-purple-400 underline" href="{{ route('realHome') }}"><= Home</a>
     </body>
 </html>

@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Http\Controllers\Dealers;
-
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Provider;
 
-class ProductsDealerController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class TrashDealerController extends Controller
 {
     public function index()
     {
-        return view('index',[
+        return view('trash',[
 
-        'products' => Product::whereNull('deleted_at')->paginate(),
+        'products' => Product::whereNotNull('deleted_at')->paginate(),
         'providers' => Provider::latest()->paginate()
 
         ]);

@@ -12,6 +12,15 @@ class UpdateProdController extends Controller
     public function update(Request $request)
     {
 
+      $id = $request->id;
+      $valueBut = $request->input('button');
+
+      if(strcmp($valueBut, 'delete')==0){
+
+        return redirect()->route('deleteForm', ['id' => $id]);
+
+     } else {
+
         $id = $request->id;
         $name = $request->name;
         $provider = $request->provider;
@@ -38,7 +47,8 @@ class UpdateProdController extends Controller
         $products = json_decode($products, true);
         $i = 10;
 
-        return view('updateResult')->with('products', $products);
+        return view('updateResult');
 
     }
+  }
 }

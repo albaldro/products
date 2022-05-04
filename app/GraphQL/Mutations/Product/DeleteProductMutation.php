@@ -26,7 +26,7 @@ class DeleteProductMutation extends Mutation
             'id' => [
                 'name' => 'id',
                 'type' => Type::nonNull(Type::string()),
-                'rules' => ['exists:Products']
+                'rules' => ['required']
             ]
         ];
     }

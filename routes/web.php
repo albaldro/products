@@ -11,3 +11,7 @@ Route::get('/insertProd', [App\Http\Controllers\Dealers\InsertProdDealerControll
 Route::get('/insertResult', [App\Http\Controllers\Inserts\InsertProdController::class, 'crear'])->name('insertForm');
 
 Route::get('/updateResult', [App\Http\Controllers\Updates\UpdateProdController::class, 'update'])->name('updateForm');
+
+Route::get('/deleteResult', [App\Http\Controllers\Deletes\DeleteProdController::class, 'delete'])->name('deleteForm');
+
+Route::get('/trash', [App\Http\Controllers\Dealers\TrashDealerController::class, 'index'])->name('trash');
