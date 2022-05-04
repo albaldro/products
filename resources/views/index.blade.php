@@ -6,7 +6,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>Laravel</title>
   </head>
-  <body class="text-center text-2xl">
+  <body class="text-center text-2xl bg-lime-200">
+
+  <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5">
+    <a href="{{ route('insertProd') }}">
+    Insert Product
+    </a>
+  </button>
 
   <div class="flex justify-center m-10">
     <form class="border-2 rounded-lg border-black w-70 bg-cyan-200 " action="{{ route('form') }}">

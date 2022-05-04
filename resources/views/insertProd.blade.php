@@ -8,22 +8,31 @@
   </head>
   <body class="text-center text-2xl">
 
-  <form action="">
+  <div class="flex justify-center m-10">
+    
+    <form class="border-2 rounded-lg border-black w-70 bg-cyan-200 " action="{{ route('insertForm') }}">
 
-    Insert name: <input type="text" name="name"><br>
-    Provider:  
-    <select name="provider" id="provider">
+    <h1 class="text-4xl font-bold mb-5 ml-3 mr-3 ">
+          Insert product:
+    </h1>
 
-    @foreach($providers as $provider)
+      <span class="m-5"> Name: <input  class="mt-5 mr-5 mb-5 w-52" type="text" name="name"> </span> <br>
+      <span class="ml-5"> Provider: </span>  
+      <select class="mb-3 mr-5 select w-60 max-w-xl rounded-full text-center" name="provider" id="provider">
 
-        <option value="{{ $provider->id }}"> {{ $provider->name }} </option>
+      @foreach($providers as $provider)
 
-    @endforeach
-    </select>
+        <option class="" value="{{ $provider->id }}"> {{ $provider->name }} </option>
+
+      @endforeach
+      </select> <br>
 
 
+    <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5" type="submit">Insertar</button>
 
-  </form>
+    </form>
+
+  </div>
 
   </body>
 </html>

@@ -13,8 +13,6 @@ class Product extends Eloquent
     public $fillable = [
         'id',
         'reference_number',
-        'quantity',
-        'cost_price',
         'name',
         'id_provider',
     ];

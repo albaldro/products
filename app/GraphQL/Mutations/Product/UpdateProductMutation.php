@@ -32,8 +32,8 @@ class UpdateProductMutation extends Mutation
                 'name' => 'name',
                 'type' => Type::nonNull(Type::string()),
             ],
-            'reference_number' => [
-                'name' => 'reference_number',
+            'id_provider' => [
+                'name' => 'id_provider',
                 'type' => Type::nonNull(Type::string()),
             ],
         ];
