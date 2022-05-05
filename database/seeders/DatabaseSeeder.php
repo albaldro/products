@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
     {
         $providers = Provider::factory(3)->create();
 
-        $products = Product::factory(10)->create();
+        $products = Product::factory(30)->create();
 
         $costprices = CostPrice::factory(5)->create();
 

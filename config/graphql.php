@@ -100,6 +100,8 @@ return [
 
                 'deleteProvider' => \App\GraphQL\Mutations\Provider\DeleteProviderMutation::class,
                 'deleteProduct' => \App\GraphQL\Mutations\Product\DeleteProductMutation::class,
+                'trashdeleteProduct' => \App\GraphQL\Mutations\Product\TrashDeleteProductMutation::class,
+                'restoreProduct' => \App\GraphQL\Mutations\Product\RestoreProductMutation::class,
                 'deleteCostPrice' => \App\GraphQL\Mutations\CostPrice\DeleteCostPriceMutation::class,
                 'deleteSellPrice' => \App\GraphQL\Mutations\SellPrice\DeleteSellPriceMutation::class,
 

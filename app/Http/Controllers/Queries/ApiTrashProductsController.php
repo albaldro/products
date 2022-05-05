@@ -5,16 +5,12 @@ namespace App\Http\Controllers\Queries;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\Provider;
 
-class ApiProductsController extends Controller
+
+class ApiTrashProductsController extends Controller
 {
-
-    public function __construct() {}
-
     public function crear(Request $request)
     {
-
         $id = $request->id;
         $query = <<<GQL
         query{
@@ -37,8 +33,6 @@ class ApiProductsController extends Controller
         $i = 10;
 
         
-        return view('home', [
-            'providers' => Provider::latest()->paginate()
-        ])->with('products', $products);
+        return view('trashView')->with('products', $products);
     }
 }

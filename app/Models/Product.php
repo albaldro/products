@@ -20,6 +20,6 @@ class Product extends Eloquent
     ];
 
     public function provider() {
-        return $this->belongsTo(Provider::class);
+        return $this->belongsTo(Provider::class, 'id_provider');
     }
 }

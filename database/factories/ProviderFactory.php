@@ -4,9 +4,11 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
+use App\Models\Provider;
 
 class ProviderFactory extends Factory
 {
+    protected $model = Provider::class;
     /**
      * Define the model's default state.
      *
@@ -15,7 +17,6 @@ class ProviderFactory extends Factory
     public function definition()
     {
         return [
-            'providerid' => $this->faker->unique()->uuid(),
             'name' => $this->faker->name(),
         ];
     }

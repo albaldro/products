@@ -14,6 +14,12 @@
     </a>
   </button>
 
+  <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5">
+    <a href="{{ route('trashHome') }}">
+    Trash Products
+    </a>
+  </button>
+
   <div class="flex justify-center m-10">
     <form class="border-2 rounded-lg border-black w-70 bg-cyan-200 " action="{{ route('form') }}">
 
@@ -34,7 +40,7 @@
       </select>
 
       <p>
-          <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5" type="submit">Enviar</button>
+          <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5" type="submit">Search</button>
       </p>
     </form>
   </div>
@@ -51,7 +57,7 @@
                     {{ $product->name }}
                   </div></input> <br>
                 Nº Ref: {{ $product->reference_number }} <br>
-                ID Provider: {{ $product->id_provider }}
+                Provider: {{ $product->provider->name }}
               </div>
             </button>
           </form>
