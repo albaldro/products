@@ -15,6 +15,7 @@ class CreateProvidersTable extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->string('name');
+            $table->softDeletes();
         });
     }
 

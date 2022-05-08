@@ -38,6 +38,6 @@ class ProviderQuery extends Query
 
     public function resolve($root, $args)
     {
-        return Provider::findOrFail($args['name']);
+        return Provider::findOrFail($args['id']);
     }
 }

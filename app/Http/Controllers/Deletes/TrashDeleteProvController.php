@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Deletes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\Product;
-use App\Models\Provider;
 
 
-class TrashDeleteProdController extends Controller
+class TrashDeleteProvController extends Controller
 {
     public function delete(Request $request)
     {
@@ -20,24 +18,24 @@ class TrashDeleteProdController extends Controller
 
         if(strcmp($valueBut, 'restore')==0){
 
-            return redirect()->route('trashRestForm', ['id' => $id]);
+            return redirect()->route('trashRestProvForm', ['id' => $id]);
 
         } else {
 
             $id = $request->id;
             $query = <<<GQL
             mutation{
-                trashdeleteProduct(id: "$id")
+                trashdeleteProvider(id: "$id")
             }
             GQL;
 
-            $products = HTTP::post('http://192.168.0.10:8000/graphql/', [
+            $providers = HTTP::post('http://192.168.0.10:8000/graphql/', [
                 'query' => $query
             ]);
 
-            $products = json_decode($products, true);
+            $providers = json_decode($providers, true);
 
-            return view('/Result/trashDeleteResult');
+            return view('/Result/trashDeleteProvResult');
         }
     }
 }

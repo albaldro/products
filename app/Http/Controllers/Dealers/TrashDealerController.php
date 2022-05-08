@@ -14,7 +14,17 @@ class TrashDealerController extends Controller
         return view('trash',[
 
         'products' => Product::whereNotNull('deleted_at')->paginate(),
-        'providers' => Provider::latest()->paginate()
+        'providers' => Provider::whereNotNull('deleted_at')->paginate()
+
+        ]);
+    }
+
+    public function indexProv()
+    {
+        return view('trashProv',[
+
+        'products' => Product::whereNotNull('deleted_at')->paginate(),
+        'providers' => Provider::whereNotNull('deleted_at')->paginate()
 
         ]);
     }

@@ -12,7 +12,7 @@ class UpdateProdDealerController extends Controller
 {
     public function index()
     {
-        return view('updateProd',[
+        return view('/Update/updateProd',[
 
         'providers' => Provider::latest()->paginate(),
         'products' => Product::latest()->paginate()

@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Inserts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Faker\Generator as Faker;
+use App\Models\Product;
+use App\Models\Provider;
 
 
 class InsertProdController extends Controller
@@ -40,9 +41,7 @@ class InsertProdController extends Controller
         ]);
 
         $products = json_decode($products, true);
-        $i = 10;
 
-        return view('insertResult')->with('products', $products);
-
+        return view('/Result/insertResult');
     }
 }

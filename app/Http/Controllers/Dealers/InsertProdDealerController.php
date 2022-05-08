@@ -10,7 +10,7 @@ class InsertProdDealerController extends Controller
 {
     public function index()
     {
-        return view('insertProd',[
+        return view('/Insert/insertProd',[
 
         'providers' => Provider::latest()->paginate()
 

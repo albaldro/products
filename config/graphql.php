@@ -99,7 +99,10 @@ return [
                 'updateSellPrice' => \App\GraphQL\Mutations\SellPrice\UpdateSellPriceMutation::class,
 
                 'deleteProvider' => \App\GraphQL\Mutations\Provider\DeleteProviderMutation::class,
+                'trashdeleteProvider' =>\App\GraphQL\Mutations\Provider\TrashDeleteProviderMutation::class,
+                'restoreProvider' => \App\GraphQL\Mutations\Provider\RestoreProviderMutation::class,
                 'deleteProduct' => \App\GraphQL\Mutations\Product\DeleteProductMutation::class,
+
                 'trashdeleteProduct' => \App\GraphQL\Mutations\Product\TrashDeleteProductMutation::class,
                 'restoreProduct' => \App\GraphQL\Mutations\Product\RestoreProductMutation::class,
                 'deleteCostPrice' => \App\GraphQL\Mutations\CostPrice\DeleteCostPriceMutation::class,

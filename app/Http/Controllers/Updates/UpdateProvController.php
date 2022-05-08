@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Product;
 use App\Models\Provider;
 
-
-class UpdateProdController extends Controller
+class UpdateProvController extends Controller
 {
     public function update(Request $request)
     {
@@ -19,36 +18,34 @@ class UpdateProdController extends Controller
 
       if(strcmp($valueBut, 'delete')==0){
 
-        return redirect()->route('deleteForm', ['id' => $id]);
+        return redirect()->route('deleteProvForm', ['id' => $id]);
 
      } else {
 
         $id = $request->id;
         $name = $request->name;
-        $provider = $request->provider;
         $query = <<<GQL
         mutation
         {
-          updateProduct
+          updateProvider
           (
             id: "$id"
-            name: "$name"
-            id_provider: "$provider"
-            
+            name: "$name"            
           ) {
             name
-            id_provider
           }
         }
         GQL;
 
-        $products = HTTP::post('http://192.168.0.10:8000/graphql/', [
+        $providers = HTTP::post('http://192.168.0.10:8000/graphql/', [
             'query' => $query
         ]);
 
-        $products = json_decode($products, true);
+        $providers = json_decode($providers, true);
+        $info = "The provider has been updated";
 
-        return view('/Result/updateResult');
+        return view('/Result/updateProvResult');
+
     }
   }
 }

@@ -2,24 +2,41 @@
 
 use Illuminate\Support\Facades\Route;
 
+//Products
 Route::get('/', [App\Http\Controllers\Dealers\ProductsDealerController::class, 'index'])->name('realHome'); 
 
-Route::get('/home', [App\Http\Controllers\Queries\ApiProductsController::class, 'crear'])->name('form');
+Route::get('/Update/home', [App\Http\Controllers\Queries\ApiProductsController::class, 'crear'])->name('form');
 
-Route::get('/insertProd', [App\Http\Controllers\Dealers\InsertProdDealerController::class, 'index'])->name('insertProd');
+Route::get('/Insert/insertProd', [App\Http\Controllers\Dealers\InsertProdDealerController::class, 'index'])->name('insertProd');
 
-Route::get('/insertResult', [App\Http\Controllers\Inserts\InsertProdController::class, 'crear'])->name('insertForm');
+Route::get('/Result/insertResult', [App\Http\Controllers\Inserts\InsertProdController::class, 'crear'])->name('insertForm');
 
-Route::get('/updateResult', [App\Http\Controllers\Updates\UpdateProdController::class, 'update'])->name('updateForm');
+Route::get('/Result/updateResult', [App\Http\Controllers\Updates\UpdateProdController::class, 'update'])->name('updateForm');
 
-Route::get('/deleteResult', [App\Http\Controllers\Deletes\DeleteProdController::class, 'delete'])->name('deleteForm');
+Route::get('/Result/deleteResult', [App\Http\Controllers\Deletes\DeleteProdController::class, 'delete'])->name('deleteForm');
 
 Route::get('/trash', [App\Http\Controllers\Dealers\TrashDealerController::class, 'index'])->name('trashHome');
 
-Route::get('/trashView', [App\Http\Controllers\Queries\ApiTrashProductsController::class, 'crear'])->name('trashView');
+Route::get('/Update//trashView', [App\Http\Controllers\Queries\ApiTrashProductsController::class, 'crear'])->name('trashView');
 
-Route::get('/trashDeleteResult', [App\Http\Controllers\Deletes\TrashDeleteProdController::class, 'delete'])->name('trashForm');
+Route::get('/Result/trashDeleteResult', [App\Http\Controllers\Deletes\TrashDeleteProdController::class, 'delete'])->name('trashForm');
 
-Route::get('/trashRestoreResult', [App\Http\Controllers\Deletes\TrashRestoreProdController::class, 'restore'])->name('trashRestForm');
+Route::get('/Result/trashRestoreResult', [App\Http\Controllers\Deletes\TrashRestoreProdController::class, 'restore'])->name('trashRestForm');
 
-Route::get('/insertProvResult', [App\Http\Controllers\Inserts\InsertProvController::class, 'crear'])->name('insertProvForm');
+
+//Providers
+Route::get('/Update/homeProv', [App\Http\Controllers\Queries\ApiProvidersController::class, 'crear'])->name('provForm');
+
+Route::get('/insertprov', [App\Http\Controllers\Inserts\InsertProvController::class, 'crear'])->name('insertProvForm');
+
+Route::get('/Result/updateProvResult', [App\Http\Controllers\Updates\UpdateProvController::class, 'update'])->name('updateProvForm');
+
+Route::get('/Result/deleteProvResult', [App\Http\Controllers\Deletes\DeleteProvController::class, 'delete'])->name('deleteProvForm');
+
+Route::get('/trashProv', [App\Http\Controllers\Dealers\TrashDealerController::class, 'indexProv'])->name('trashProvHome');
+
+Route::get('/trashProvView', [App\Http\Controllers\Queries\ApiTrashProvidersController::class, 'crear'])->name('trashProvView');
+
+Route::get('/Result/trashDeleteProvResult', [App\Http\Controllers\Deletes\TrashDeleteProvController::class, 'delete'])->name('trashProvForm');
+
+Route::get('/Result/trashRestoreProvResult', [App\Http\Controllers\Deletes\TrashRestoreProvController::class, 'restore'])->name('trashRestProvForm');

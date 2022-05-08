@@ -11,7 +11,6 @@
 
     @foreach($products as $product)
 
-
         <div class="flex justify-center m-10">
             <form method="GET" class="border-2 rounded-lg border-black w-64 bg-cyan-200 " action="{{ route('updateForm') }}">
 
@@ -66,48 +65,3 @@
 
     </body>
 </html>
-
-
-
-
-  <!-- 
-            <div class="grid grid-cols-1 justify-center text-lg">
-                <table class="m-5 border-2 border-black max-w-xl border-collapse rounded-lg max-h-xl">
-                    
-                        <td></td>
-
-                        <th class="border border-slate-300 text-center p-3 rounded-md">
-                            {{ $product['product']['name'] }}
-                        </th>
-
-                        <th class="border border-slate-300 text-center p-3">
-                            Nombre proveedor
-                        </th>
-                            
-                    </tr>
-
-                    
-                        <td class="border border-slate-300 text-center p-2">
-                            ID
-                        </td>
-
-                        <td class="border border-slate-300 text-center p-2">
-                            {{ $product['product']['id'] }}
-                        </td>
-                            
-                        <td class="border border-slate-300 text-center p-2">
-                            id proveedor
-                        </td>
-                    </tr>
-
-                    
-                        <td class="border border-slate-300 text-center p-2">
-                            Reference Nº
-                        </td>
-
-                        <td colspan="2" class="border border-slate-300 text-center p-2">
-                            {{ $product['product']['reference_number'] }}
-                        </td>
-                    </tr>
-                </table>
-            -->
