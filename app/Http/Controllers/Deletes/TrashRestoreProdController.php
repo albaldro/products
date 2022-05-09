@@ -26,6 +26,8 @@ class TrashRestoreProdController extends Controller
 
         $products = json_decode($products, true);
 
-        return view('/Result/trashRestoreResult');
+        $message = "Product restored!";
+
+        return redirect('/trash')->with('message',$message);
     }
 }

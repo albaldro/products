@@ -45,10 +45,7 @@
                     </p>
 
                     
-                    <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5 mr-3" type="submit" name="button" value="update">Update</button>
-                    
-                    <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5" type="submit" name="button" value="delete">Delete</button>
-                    
+                    <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5 mr-3" type="submit" name="button" value="update">Update</button>                    
                     
             </form>
         </div>
@@ -58,9 +55,9 @@
     </div>
 
     <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 ">
-    <a href="{{ route('realHome') }}">
-      Home
-    </a>
+        <a href="{{ route('realHome') }}">
+        Home
+        </a>
     </button>
 
     </body>

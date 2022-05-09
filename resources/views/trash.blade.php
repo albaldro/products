@@ -8,7 +8,7 @@
   </head>
   <body class="text-center text-2xl bg-lime-200">  
 
-    <h1 class="text-4xl font-bold mb-5 ml-3 mr-3 "> Trash products</h1>
+    <h1 class="text-4xl font-bold mb-5 ml-3 mr-3 "> Trash</h1>
 
     <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5">
     <a href="{{ route('realHome') }}">
@@ -16,23 +16,99 @@
     </a>
     </button>
 
-  
-      <div class="grid grid-cols-[400px_400px_400px] gap-4 justify-center mt-10">
-        @foreach ($products as $product)
-          <form action="{{ route('trashView') }}">
-            <button type="submit">
-              <div class="border-2 w-96 h-64 rounded-3xl bg-violet-400">
-                <input value="{{ $product->_id }}" type="hidden" name="id"></input>
-                  <div class="text-black-600 pb-3 text-3xl">
-                    {{ $product->name }}
-                  </div></input> <br>
-                Nº Ref: {{ $product->reference_number }} <br>
-                Provider: {{ $product->provider->name }}
-              </div>
-            </button>
-          </form>
-        @endforeach
+    @if(session('message'))
+    <div class=" mb-5"> {{ session('message') }}  </div>
+    @endif
+    
+    <div class="flex flex-row flex-nowrap w-full justify-around ">
+
+      <div class=" border-black border-2px table-collapse mx-auto content-center">
+
+        <table class="border-black border-2px table-collapse mx-auto content-center">
+          <caption class="mb-5 border-black border-2px">Products</caption> 
+          <tr class="border-black border-2 px-4">
+            <th class="border-black border-2">
+              ID
+            </th>
+            <th class="border-black border-2">
+              Name
+            </th>
+            <th class="border-black border-2">
+              Reference Nº
+            </th>
+            <th class="border-black border-2">
+              Provider
+            </th>
+            <th class="border-black border-2">
+              Botones
+            </th>
+          </tr>
+
+          @foreach($products as $product)
+          <tr class="border-black border-2 px-4">
+            <td class="p-8">
+              {{$product->_id}}
+            </td>
+            <td>
+              {{$product->name}}
+            </td>
+            <td>
+              {{$product->reference_number}}
+            </td>
+            <td>
+              {{$product->provider->name}}
+            </td>
+            <td>
+              <form action="{{ route('trashForm') }}">
+                <input name="id" type="hidden" value="{{$product->_id}}">
+                <button type="submit" class=" border-black border-2 m-3" name="button" value="restore">Restore</button>
+                <button type="submit" class=" border-black border-2 m-3 " name="button" value="delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
+        </table>
+
       </div>
+
+      <div class=" content-center">
+
+        <table  class="border-black border-2px table-collapse mx-auto content-center">
+        <caption class="mb-5">Providers</caption>
+          <tr class="border-black border-2 px-4">
+            <th class="w-fit">
+              ID
+            </th>
+            <th class="border-black border-2">
+              Name
+            </th>
+            <th class="border-black border-2">
+              Botones
+            </th>
+          </tr>
+
+          @foreach($providers as $provider)
+          <tr class="border-black border-2 px-4">
+            <td >
+              {{$provider->_id}}
+            </td>
+            <td>
+              {{$provider->name}}
+            </td>
+            <td>
+              <form action="{{ route('trashProvForm') }}">
+                <input name="id" type="hidden" value="{{$provider->id}}">
+                <button type="submit" class=" border-black border-2 m-3" name="button" value="restore">Restore</button>
+                <button type="submit" class=" border-black border-2 m-3" name="button" value="delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
+        </table>
+
+      </div>
+
+    </div>
 
   </body>
 </html>

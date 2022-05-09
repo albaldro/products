@@ -37,7 +37,9 @@ class TrashDeleteProdController extends Controller
 
             $products = json_decode($products, true);
 
-            return view('/Result/trashDeleteResult');
+            $message = "Product deleted permanently!";
+
+        return redirect('/trash')->with('message',$message);
         }
     }
 }

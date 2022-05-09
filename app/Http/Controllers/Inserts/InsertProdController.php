@@ -42,6 +42,8 @@ class InsertProdController extends Controller
 
         $products = json_decode($products, true);
 
-        return view('/Result/insertResult');
+        $message = "Product inserted!";
+
+        return redirect('/')->with('message',$message);
     }
 }

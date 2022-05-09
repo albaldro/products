@@ -25,6 +25,8 @@ class TrashRestoreProvController extends Controller
 
         $providers = json_decode($providers, true);
 
-        return view('/Result/trashRestoreProvResult');
+        $message = "Provider restored!";
+
+        return redirect('/trash')->with('message',$message);
     }
 }

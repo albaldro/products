@@ -15,24 +15,33 @@ class ApiProvidersController extends Controller
 
     public function crear(Request $request)
     {
+            $id = $request->id;
+            $valueBut = $request->input('button');
 
-        $id = $request->id;
-        $query = <<<GQL
-        query{
-            provider(id: "$id"){
-                id
-                name
+            if(strcmp($valueBut, 'delete')==0){
+
+            return redirect()->route('deleteProvForm', ['id' => $id]);
+
+            }else{
+
+            $id = $request->id;
+            $query = <<<GQL
+            query{
+                provider(id: "$id"){
+                    id
+                    name
+                }
             }
+            GQL;
+
+            $providers = HTTP::post('http://192.168.1.205:8000/graphql/', [
+                'query' => $query
+            ]);
+            $providers = json_decode($providers, true);
+            $i = 10;
+
+            
+            return view('/Update/homeProv')->with('providers', $providers);
         }
-        GQL;
-
-        $providers = HTTP::post('http://192.168.1.205:8000/graphql/', [
-            'query' => $query
-        ]);
-        $providers = json_decode($providers, true);
-        $i = 10;
-
-        
-        return view('/Update/homeProv')->with('providers', $providers);
     }
 }

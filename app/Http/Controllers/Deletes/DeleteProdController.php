@@ -27,7 +27,9 @@ class DeleteProdController extends Controller
 
         $products = json_decode($products, true);
 
-        return view('/Result/deleteResult');
+        $message = "Product deleted temporally!";
+
+        return redirect('/')->with('message',$message);
 
           
     }

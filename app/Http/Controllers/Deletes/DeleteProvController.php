@@ -25,7 +25,9 @@ class DeleteProvController extends Controller
 
         $providers = json_decode($providers, true);
 
-        return view('/Result/deleteProvResult');
+        $message = "Provider deleted temporally!";
+
+        return redirect('/')->with('message',$message);
 
           
     }

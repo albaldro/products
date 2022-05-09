@@ -16,29 +16,40 @@ class ApiProductsController extends Controller
     {
 
         $id = $request->id;
-        $query = <<<GQL
-        query{
-            product(id: "$id"){
-                id
-                name
-                reference_number
-                id_provider
-                provider {
+        $valueBut = $request->input('button');
+
+        if(strcmp($valueBut, 'delete')==0){
+
+        return redirect()->route('deleteForm', ['id' => $id]);
+
+        }else{
+
+            $id = $request->id;
+            $query = <<<GQL
+            query{
+                product(id: "$id"){
+                    id
                     name
+                    reference_number
+                    id_provider
+                    provider {
+                        name
+                    }
                 }
             }
-        }
-        GQL;
+            GQL;
 
-        $products = HTTP::post('http://192.168.1.205:8000/graphql/', [
-            'query' => $query
-        ]);
-        $products = json_decode($products, true);
-        $i = 10;
+            $products = HTTP::post('http://192.168.1.205:8000/graphql/', [
+                'query' => $query
+            ]);
 
+            $products = json_decode($products, true);
+            $i = 10;
+            
+            return view('/Update/home', [
+                'providers' => Provider::latest()->paginate()
+            ])->with('products', $products);
         
-        return view('/Update/home', [
-            'providers' => Provider::latest()->paginate()
-        ])->with('products', $products);
+        }
     }
 }

@@ -13,15 +13,6 @@ class UpdateProvController extends Controller
     public function update(Request $request)
     {
 
-      $id = $request->id;
-      $valueBut = $request->input('button');
-
-      if(strcmp($valueBut, 'delete')==0){
-
-        return redirect()->route('deleteProvForm', ['id' => $id]);
-
-     } else {
-
         $id = $request->id;
         $name = $request->name;
         $query = <<<GQL
@@ -44,8 +35,8 @@ class UpdateProvController extends Controller
         $providers = json_decode($providers, true);
         $info = "The provider has been updated";
 
-        return view('/Result/updateProvResult');
+        $message = "Provider updated!";
 
-    }
+        return redirect('/')->with('message',$message);
   }
 }

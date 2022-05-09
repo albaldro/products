@@ -37,7 +37,9 @@ class InsertProvController extends Controller
 
         $providers = json_decode($providers, true);
         
-        return view('/Result/insertProvResult');
+        $message = "Provider inserted!";
+
+        return redirect('/')->with('message',$message);
     }
 
 }

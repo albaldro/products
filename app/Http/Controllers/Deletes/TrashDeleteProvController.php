@@ -35,7 +35,9 @@ class TrashDeleteProvController extends Controller
 
             $providers = json_decode($providers, true);
 
-            return view('/Result/trashDeleteProvResult');
+            $message = "Provider deleted permanently!";
+
+        return redirect('/trash')->with('message',$message);
         }
     }
 }
