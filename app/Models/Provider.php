@@ -14,10 +14,11 @@ class Provider extends Eloquent
     use SoftDeletes;
 
     public $fillable = [
+        'id',
         'name',
     ];
 
     public function products() {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'id');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 use App\Models\Provider;
 use App\Models\Product;
+use App\Models\CostPrice;
 use DB;
 
 

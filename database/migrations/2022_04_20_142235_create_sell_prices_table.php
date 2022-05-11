@@ -14,7 +14,6 @@ class CreateSellPricesTable extends Migration
     public function up()
     {
         Schema::create('sell_prices', function (Blueprint $table) {
-            $table->id();
             $table->string('id_product');
             $table->int('quantity');
             $table->float('price');

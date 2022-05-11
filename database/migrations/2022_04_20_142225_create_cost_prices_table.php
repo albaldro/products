@@ -14,10 +14,12 @@ class CreateCostPricesTable extends Migration
     public function up()
     {
         Schema::create('cost_prices', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_product')->constrained('products')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('id_product');
             $table->int('quantity');
             $table->float('cost');
+
+            $table->foreign('id_product')->refrences('_id')->on('products');
+
         });
     }
 

@@ -36,10 +36,16 @@ class ProductType extends GraphQLType
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'id provider of product'
             ],
+            
             'provider' => [
                 'type' => GraphQL::type('Provider'),
                 'description' => 'The provider of the product'
+            ],
+            'costPrices' => [
+                'type' => Type::listOf(GraphQL::type('CostPrice')),
+                'description' => 'The CostPrice of the product'
             ]
+
         ];
     }
 }

@@ -31,7 +31,7 @@ class TrashDeleteProdController extends Controller
             }
             GQL;
 
-            $products = HTTP::post('http://192.168.1.205:8000/graphql/', [
+            $products = HTTP::post('http://192.168.0.10:8000/graphql/', [
                 'query' => $query
             ]);
 

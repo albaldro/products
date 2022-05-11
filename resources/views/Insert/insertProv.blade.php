@@ -37,11 +37,11 @@
         </div>
 
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="/" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="{{ route('realHome') }}" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Home
             </a>
-            <a href="/trash" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{{ route('trashHome') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Trash
             </a>
@@ -121,84 +121,28 @@
     
         <div class="w-full overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Trash</h1>
-    
-                <div class="w-full mt-12">
-                    <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Products
-                    </p>
-                    <div class="bg-white overflow-auto">
-                        <table class="min-w-full bg-white">
-                            <thead class="bg-gray-800 text-white">
-                                <tr>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Reference Nº</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Provider</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
+                <h1 class="text-3xl text-black pb-6">Insert new Provider</h1>
 
-               
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700">
-                                @foreach($products as $product)
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">{{ $product->id }}</td>
-                                    <td class="w-1/3 text-left py-3 px-4">{{ $product->name }}</td>
-                                    <td class="text-left py-3 px-4">{{ $product->reference_number }}</td>
-                                    <td class="text-left py-3 px-4">{{ $product->provider->name }}</td>
-                                    <td class="text-left py-3 px-4">
-                                    <form action="{{ route('trashProvForm') }}">
-                                      <input name="id" type="hidden" value="{{$product->_id}}">
-                                      <button type="submit" class=" border-black border-2 m-3" name="button" value="restore">Restore</button>
-                                      <button type="submit" class=" border-black border-2 m-3 " name="button" value="delete">Delete</button>
-                                  </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <div class="flex">
+                    <form method="GET" class="text-xl" action="{{ route('insertProvForm') }}">
 
-                        
-                    </div>
+
+                        <input type="hidden" readonly name="id">
+
+
+                        <p>
+                            Name: <input class="pl-5 text-2xl" type="text" name="name">
+                        </p>
+                                
+                        <button class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" type="submit" name="button" value="update">Insert</button>                    
+                                
+                    </form>
                 </div>
 
-                <div class="w-full mt-12">
-                    <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Providers
-                    </p>
-                    <div class="bg-white overflow-auto">
-                    <table class="min-w-full bg-white">
-                            <thead class="bg-gray-800 text-white">
-                                <tr>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700">
-                                @foreach($providers as $provider)
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">{{ $provider->id }}</td>
-                                    <td class="w-1/3 text-left py-3 px-4">{{ $provider->name }}</td>
-                                    <td class="text-left py-3 px-4">
-                                    <form action="{{ route('trashProvForm') }}">
-                                      <input name="id" type="hidden" value="{{$provider->_id}}">
-                                      <button type="submit" class=" border-black border-2 m-3" name="button" value="restore">Restore</button>
-                                      <button type="submit" class=" border-black border-2 m-3 " name="button" value="delete">Delete</button>
-                                  </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                </div>                
             </main>
     
-            <footer class="w-full bg-white text-right p-4">
-                Built by <a target="_blank" href="#" class="underline">Paquito Balderraba</a>.
-            </footer>
+       
         </div>
         
     </div>
@@ -289,3 +233,34 @@
     </script>
 </body>
 </html>
+
+
+<!--<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>Laravel</title>
+  </head>
+  <body class="text-center text-2xl bg-lime-200">
+
+  <div class="flex justify-center m-10">
+    
+    <form class="border-2 rounded-lg border-black w-70 bg-cyan-200 " action="{{ route('insertProvForm') }}">
+
+    <h1 class="text-4xl font-bold mb-5 ml-3 mr-3 ">
+          Insert provider:
+    </h1>
+
+      <span class="m-5"> Name: <input  class="mt-5 mr-5 mb-5 w-52" type="text" name="name"> </span> <br>
+      
+
+    <button class="bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5" type="submit">Insertar</button>
+
+    </form>
+
+  </div>
+
+  </body>
+</html>-->

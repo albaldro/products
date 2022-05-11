@@ -26,22 +26,22 @@
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
-            <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-            <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+            <a href="" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+            <a href="/Insert/insertProd" class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Product
-            </button>
+            </a>
 
-            <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+            <a href="/insert/insertProv" class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Provider
-            </button>
+            </a>
         </div>
 
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="index.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="{{ route('realHome') }}" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Home
             </a>
-            <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{{ route('trashHome') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Trash
             </a>
@@ -54,7 +54,7 @@
             <div class="w-1/2"></div>
             <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-                    <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcbLPpBoOtxfE3X1BWGDctiygzDHecy5j8Yw&usqp=CAU">
                 </button>
                 <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
                 <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
@@ -117,9 +117,6 @@
                     <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
                 </button>
             </nav>
-            <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
         </header>
     
         <div class="w-full overflow-x-hidden border-t flex flex-col">
@@ -128,7 +125,7 @@
     
                 <div class="w-full mt-12">
                     <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Latest Reports
+                        <i class="fas fa-list mr-3"></i> Products
                     </p>
                     <div class="bg-white overflow-auto">
                         <table class="min-w-full bg-white">
@@ -136,68 +133,63 @@
                                 <tr>
                                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
                                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Reference Nº</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Ref Nº</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Provider</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
 
-                                    <!-- 
-                                      <form action="{{ route('provForm') }}">
-              <input name="id" type="hidden" value="{{$provider->id}}">
-              <button type="submit" class="bg-purple-500/40 border-black border-2 m-3 rounded-full p-3" name="button" value="update">Update</button>
-              <button type="submit" class="bg-red-500/60 border-black border-2 m-3 rounded-full p-3" name="button" value="delete">Delete</button>
-            </form>
-                                    -->
+               
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700">
+                                @foreach($products as $product)
                                 <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                    <td class="w-1/3 text-left py-3 px-4">{{ $product->id }}</td>
+                                    <td class="w-1/3 text-left py-3 px-4">{{ $product->name }}</td>
+                                    <td class="text-left py-3 px-4">{{ $product->reference_number }}</td>
+                                    <td class="text-left py-3 px-4">{{ $product->provider->name }}</td>
+                                    <td class="text-left py-3 px-4">
+                                    <form action="{{ route('form') }}">
+                                        <input name="id" type="hidden" value="{{$product->_id}}">
+                                        <button type="submit" class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="update">Update</button>
+                                        <button type="submit" class=" bg-red-500 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="delete">Delete</button>
+                                    </form>
+                                    </td>
                                 </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                        
+                    </div>
+                </div>
+
+                <div class="w-full mt-12">
+                    <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-list mr-3"></i> Providers
+                    </p>
+                    <div class="bg-white overflow-auto">
+                    <table class="min-w-full bg-white">
+                            <thead class="bg-gray-800 text-white">
                                 <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
                                 </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                @foreach($providers as $provider)
                                 <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                    <td class="w-1/3 text-left py-3 px-4">{{ $provider->id }}</td>
+                                    <td class="w-1/3 text-left py-3 px-4">{{ $provider->name }}</td>
+                                    <td class="text-left py-3 px-4">
+                                    <form action="{{ route('provForm') }}">
+                                        <input name="id" type="hidden" value="{{ $provider->_id }}">
+                                        <button type="submit" class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="update">Update</button>
+                                        <button type="submit" class=" bg-red-500 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="delete">Delete</button>
+                                    </form>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -205,7 +197,7 @@
             </main>
     
             <footer class="w-full bg-white text-right p-4">
-                Built by <a target="_blank" href="https://davidgrzyb.com" class="underline">David Grzyb</a>.
+                Built by <a target="_blank" href="https://platzi.com/cursos/api-rest/" class="underline">Paquito Balderraba</a>.
             </footer>
         </div>
         

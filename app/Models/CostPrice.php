@@ -11,6 +11,8 @@ class CostPrice extends Eloquent
 {
     use HasFactory;
 
+    protected $table = 'cost_prices';
+
     public $fillable = [
         'id',
         'id_product',
@@ -18,7 +20,8 @@ class CostPrice extends Eloquent
         'cost',
     ];
 
-    public function product() {
-        return $this->belongsTo(Product::class);
+    
+    public function product(){
+        return $this->belongsTo(Product::class, 'id_product');
     }
 }

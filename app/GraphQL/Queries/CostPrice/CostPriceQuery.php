@@ -26,7 +26,6 @@ class CostPriceQuery extends Query
             'id' => [
                 'name' => 'id',
                 'type' => Type::string(),
-                'rules' => ['required']
             ]
         ];
     }

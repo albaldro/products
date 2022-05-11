@@ -27,6 +27,10 @@ Route::get('/Result/trashRestoreResult', [App\Http\Controllers\Deletes\TrashRest
 //Providers
 Route::get('/Update/homeProv', [App\Http\Controllers\Queries\ApiProvidersController::class, 'crear'])->name('provForm');
 
+Route::get('/insert/insertProv', function() {
+    return view('Insert.insertProv');
+});
+
 Route::get('/insertprov', [App\Http\Controllers\Inserts\InsertProvController::class, 'crear'])->name('insertProvForm');
 
 Route::get('/Result/updateProvResult', [App\Http\Controllers\Updates\UpdateProvController::class, 'update'])->name('updateProvForm');

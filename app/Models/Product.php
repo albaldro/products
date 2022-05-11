@@ -19,7 +19,15 @@ class Product extends Eloquent
         'id_provider',
     ];
 
+  
+
     public function provider() {
         return $this->belongsTo(Provider::class, 'id_provider');
     }
+
+    public function costPrice(){
+        return $this->hasMany(CostPrice::class, 'id');
+    }
+
+
 }

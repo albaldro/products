@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Provider;
+use App\Models\Product;
 
 
 
@@ -34,14 +35,18 @@ class ApiProvidersController extends Controller
             }
             GQL;
 
-            $providers = HTTP::post('http://192.168.1.205:8000/graphql/', [
+            $providers = HTTP::post('http://192.168.0.10:8000/graphql/', [
                 'query' => $query
             ]);
             $providers = json_decode($providers, true);
             $i = 10;
 
             
-            return view('/Update/homeProv')->with('providers', $providers);
+            return view('/Update/homeProv',[
+
+                'products' => Product::latest()->whereNull('deleted_at')->paginate()
+
+            ])->with('providers', $providers);
         }
     }
 }
