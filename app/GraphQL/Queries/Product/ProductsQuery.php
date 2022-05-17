@@ -20,8 +20,18 @@ class ProductsQuery extends Query
         return Type::listOf(GraphQL::type('Product'));
     }
 
+    public function args(): array
+    {
+        return [
+            'name' => [
+                'name' => 'name',
+                'type' => Type::string(),
+            ]
+        ];
+    }
+
     public function resolve($root, $args)
     {
-        return Product::all();
+        return Product::where('name', 'like', $args['name'].'%')->get();
     }
 }

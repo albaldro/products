@@ -23,6 +23,10 @@ Route::get('/Result/trashDeleteResult', [App\Http\Controllers\Deletes\TrashDelet
 
 Route::get('/Result/trashRestoreResult', [App\Http\Controllers\Deletes\TrashRestoreProdController::class, 'restore'])->name('trashRestForm');
 
+Route::get('/searchProd', [\App\Http\Controllers\Queries\SearchProdQueryController::class, 'search'])->name('searchProd');
+
+Route::get('/searchProv', [\App\Http\Controllers\Queries\SearchProvQueryController::class, 'search'])->name('searchProv');
+
 
 //Providers
 Route::get('/Update/homeProv', [App\Http\Controllers\Queries\ApiProvidersController::class, 'crear'])->name('provForm');

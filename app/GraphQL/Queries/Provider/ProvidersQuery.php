@@ -20,8 +20,18 @@ class ProvidersQuery extends Query
         return Type::listOf(GraphQL::type('Provider'));
     }
 
+    public function args(): array
+    {
+        return [
+            'name' => [
+                'name' => 'name',
+                'type' => Type::string(),
+            ]
+        ];
+    }
+
     public function resolve($root, $args)
     {
-        return Provider::all();
+        return Provider::where('name', 'like', $args['name'].'%')->get();
     }
 }

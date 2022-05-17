@@ -121,14 +121,13 @@
     
         <div class="w-full overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Update</h1>
 
                 @foreach($providers as $provider)
 
                 <div class="flex justify-center m-10">
                     <form method="GET" class="border-2 rounded-lg border-black w-64 bg-cyan-200 " action="{{ route('updateProvForm') }}">
 
-                        <h1 class="text-4xl font-bold mb-5 ml-3 mr-3 ">Details</h1>
+                        <h1 class="text-4xl font-bold mb-5 ml-3 mr-3 ">Update</h1>
 
                         <input class="mbr-5 w-52" type="hidden" value="{{ $provider['provider']['id'] }}" readonly name="id">
 
@@ -147,32 +146,7 @@
 
                 @endforeach
 
-                <div class="bg-white overflow-auto">
-                        <table class="min-w-full bg-white">
-                            <thead class="bg-gray-800 text-white">
-                                <tr>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Reference Nº</th>               
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700">
-                                @foreach($providers as $provider)
-                                    @foreach($products as $product)
-                                       
-                                        <tr class="bg-gray-200">
-                                            <td class="w-1/3 text-left py-3 px-4">{{ $product->id }}</td>
-                                            <td class="w-1/3 text-left py-3 px-4">{{ $product->name }}</td>
-                                            <td class="text-left py-3 px-4">{{ $product->reference_number }}</td>
-                                        </tr>
-                                        @
-                                    @endforeach
-                                @endforeach
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
+                
             </main>
     
             <footer class="w-full bg-white text-right p-4">

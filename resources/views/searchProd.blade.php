@@ -41,10 +41,12 @@
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Home
             </a>
+            
             <a href="{{ route('trashHome') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Trash
             </a>
+
         </nav>
     </aside>
 
@@ -121,52 +123,63 @@
     
         <div class="w-full overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
+                <h1 class="text-3xl text-black pb-6">Dashboard</h1>
+                
+                <form action="{{ route('searchProd') }}">
+                    🔍    
+                    <input class=" ml-3 w-60" type="text" placeholder="Search" name="name">
 
-                @foreach($products as $product)
-                <div class="flex justify-center m-10">
-                    <form method="GET" class=" text-center border-2 rounded-lg border-black w-64 bg-cyan-200 " action="{{ route('updateForm') }}">
+                    <button class=" bg-blue-400 text-black border-black border-2 m-1 rounded-full p-1" name="button" value="update">
+                        Search
+                    </button>
+                    
+                </form>
+                
+    
+                <div class="w-full mt-12">
+                    <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-list mr-3"></i> Products
+                    </p>
+                    <div class="bg-white overflow-auto">
+                        <table class="min-w-full bg-white">
+                            <thead class="bg-gray-800 text-white">
+                                <tr>
+                                    <th class="w-fit text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
+                                    <th class="w-fit text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Ref Nº</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Provider</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
 
-                        <h1 class="text-4xl font-bold mb-5 ml-3 mr-3 ">Update</h1>
-
-                        <input class="mbr-5 w-52" type="hidden" value="{{ $product['product']['id'] }}" readonly name="id">
-
-
-                        <p class="mb-2 text-left ml-5">
-                            Name: <br>
-                            <input class="mbr-5 w-52" type="text" value="{{ $product['product']['name'] }}" name="name">
-                        </p>
-
-                        <p class="mb-2 text-left ml-5">
-                            Reference_number: <br>
-                            <input class="mbr-5 w-52" type="text" value="{{ $product['product']['reference_number'] }}" name="reference_number">
-                        </p>
-
-                        <p class=" text-left ml-5 mb-2">
-                            Provider:
-                        <span class="ml-1"> {{ $product['product']['provider']['name'] }} </span>
-                        </p>
-                        <p class=" text-left ml-5 mb-2">
-                            <span class="mt-2"> Select new Provider: </span>
-                            <select name="provider" id="provider">
-                                @foreach($providers as $provider)
-                                    <option value="{{ $provider->_id }}">
-                                        {{ $provider->name }}
-                                    </option>
+               
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                @foreach($products['data']['products'] as $product)
+                                <tr class="bg-gray-200">
+                                    <td class="w-fit text-left py-3 px-4">{{ $product['id'] }}</td>
+                                    <td class="w-fit text-left py-3 px-4">{{ $product['name']  }}</td>
+                                    <td class="text-left py-3 px-4">{{ $product['reference_number']  }}</td>
+                                    <td class="text-left py-3 px-4">{{ $product['provider']['name']  }}</td>
+                                    <td class="text-left py-3 px-4">
+                                    <form action="{{ route('form') }}">
+                                        <input name="id" type="hidden" value="{{ $product['id'] }}">
+                                        <button type="submit" class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="update">🔧</button>
+                                        <button type="submit" class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="view">👀</button>
+                                        <button type="submit" class=" bg-red-500 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="delete">❌</button>
+                                    </form>
+                                    </td>
+                                </tr>
                                 @endforeach
-                            </select>
-                        </p>
-                                
-                        <button class=" bg-purple-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mb-3 mt-5 mr-3" type="submit" name="button" value="update">Update</button>                    
-                                
-                    </form>
-                </div>
-                @endforeach
+                            </tbody>
+                        </table>
 
-                </div>                
+                        
+                    </div>
+                </div>
             </main>
     
             <footer class="w-full bg-white text-right p-4">
-                Built by <a target="_blank" href="#" class="underline">Paquito Balderraba</a>.
+                Built by <a target="_blank" href="https://platzi.com/cursos/api-rest/" class="underline">Paquito Balderraba</a>.
             </footer>
         </div>
         

@@ -13,8 +13,8 @@ class ProductsDealerController extends Controller
     {
         return view('index',[
 
-        'products' => Product::latest()->whereNull('deleted_at')->paginate(),
-        'providers' => Provider::latest()->whereNull('deleted_at')->paginate()
+        'products' => Product::latest()->whereNull('deleted_at')->paginate(7),
+        'providers' => Provider::latest()->whereNull('deleted_at')->paginate(7)
 
         ]);
     }

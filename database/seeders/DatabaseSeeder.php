@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $providers = Provider::factory(3)->create();
+        $providers = Provider::factory(18)->create();
 
         $products = Product::factory(30)->create();
 
