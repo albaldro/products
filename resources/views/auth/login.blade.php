@@ -115,15 +115,12 @@
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Sign Out
                 </a>
-                <button class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
-                </button>
             </nav>
         </header>
     
         <div class="w-full overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Dashboard</h1>
+                <h1 class="text-3xl text-black pb-6">Log In</h1>
                 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
