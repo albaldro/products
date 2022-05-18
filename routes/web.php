@@ -15,7 +15,6 @@ Route::get('/Result/updateResult', [App\Http\Controllers\Updates\UpdateProdContr
 
 Route::get('/Result/deleteResult', [App\Http\Controllers\Deletes\DeleteProdController::class, 'delete'])->name('deleteForm');
 
-Route::get('/trash', [App\Http\Controllers\Dealers\TrashDealerController::class, 'index'])->name('trashHome');
 
 Route::get('/Update//trashView', [App\Http\Controllers\Queries\ApiTrashProductsController::class, 'crear'])->name('trashView');
 
@@ -48,3 +47,15 @@ Route::get('/trashProvView', [App\Http\Controllers\Queries\ApiTrashProvidersCont
 Route::get('/Result/trashDeleteProvResult', [App\Http\Controllers\Deletes\TrashDeleteProvController::class, 'delete'])->name('trashProvForm');
 
 Route::get('/Result/trashRestoreProvResult', [App\Http\Controllers\Deletes\TrashRestoreProvController::class, 'restore'])->name('trashRestProvForm');
+
+
+Route::post('/api/register', [App\Http\Controllers\UserController::class, 'register']);
+Route::post('/api/login', [App\Http\Controllers\UserController::class, 'authenticate']);
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    
+    Route::get('/trash', [App\Http\Controllers\Dealers\TrashDealerController::class, 'index'])->name('trashHome');
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

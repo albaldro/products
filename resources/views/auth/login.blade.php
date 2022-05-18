@@ -42,12 +42,10 @@
                 Home
             </a>
             
-            @feature('my-feature', false)
             <a href="{{ route('trashHome') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Trash
             </a>
-            @endfeature
 
         </nav>
     </aside>
@@ -127,103 +125,63 @@
             <main class="w-full flex-grow p-6">
                 <h1 class="text-3xl text-black pb-6">Dashboard</h1>
                 
-                <div class="w-full mt-12">
-                    <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Products
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
 
-                        <form action="{{ route('searchProd') }}">
-                            🔍    
-                            <input class=" ml-3 w-60 mb-5" type="text" placeholder="Search" name="name">
+                    <div class="row mb-3">
+                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
-                            <button class=" bg-blue-400 text-black border-black border-2 m-1 rounded-full p-1">
-                                Search
-                            </button>
-                            
-                        </form>
-                    </p>
-                    <div class="bg-white overflow-auto">
-                        <table class="min-w-full bg-white">
-                            <thead class="bg-gray-800 text-white">
-                                <tr>
-                                    <th class="w-fit text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
-                                    <th class="w-fit text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Ref Nº</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Provider</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
+                        <div class="col-md-6">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-               
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700">
-                                @foreach($products as $product)
-                                <tr class="bg-gray-200">
-                                    <td class="w-fit text-left py-3 px-4">{{ $product->id }}</td>
-                                    <td class="w-fit text-left py-3 px-4">{{ $product->name }}</td>
-                                    <td class="text-left py-3 px-4">{{ $product->reference_number }}</td>
-                                    <td class="text-left py-3 px-4">{{ $product->provider->name }}</td>
-                                    <td class="text-left py-3 px-4">
-                                    <form action="{{ route('form') }}">
-                                        <input name="id" type="hidden" value="{{$product->_id}}">
-                                        <button type="submit" class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="update">🔧</button>
-                                        <button type="submit" class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="view">👀</button>
-                                        <button type="submit" class=" bg-red-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="delete">❌</button>
-                                    </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-
-                        {{ $products->links()}}
-                        
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
 
-                <div class="w-full mt-12">
-                    <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Providers
+                    <div class="row mb-3">
+                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                        <form action="{{ route('searchProv') }}">
-                            🔍    
-                            <input class=" ml-3 w-60 mb-5" type="text" placeholder="Search" name="name">
+                        <div class="col-md-6">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                            <button class=" bg-blue-400 text-black border-black border-2 m-1 rounded-full p-1">
-                                Search
-                            </button>
-                            
-                        </form>
-                    </p>
-                    <div class="bg-white overflow-auto">
-                    <table class="min-w-full bg-white">
-                            <thead class="bg-gray-800 text-white">
-                                <tr>
-                                    <th class="w-fit text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
-                                    <th class="w-fit text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700">
-                                @foreach($providers as $provider)
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">{{ $provider->id }}</td>
-                                    <td class="w-1/3 text-left py-3 px-4">{{ $provider->name }}</td>
-                                    <td class="text-left py-3 px-4">
-                                    <form action="{{ route('provForm') }}">
-                                        <input name="id" type="hidden" value="{{ $provider->_id }}">
-                                        <button type="submit" class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="update">🔧</button>
-                                        <button type="submit" class=" bg-blue-400 text-black border-black border-2 m-3 rounded-full p-3" name="button" value="view">👀</button>
-                                        <button type="submit" class=" bg-red-400  text-black border-black border-2 m-3 rounded-full p-3" name="button" value="delete">❌</button>
-                                    </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-
-                        {{ $providers->links()}}
-
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6 offset-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                <label class="form-check-label" for="remember">
+                                    {{ __('Remember Me') }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-0">
+                        <div class="col-md-8 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Login') }}
+                            </button>
+
+                            @if (Route::has('password.request'))
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </form>
             </main>
     
             <footer class="w-full bg-white text-right p-4">
