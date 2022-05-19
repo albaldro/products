@@ -127,6 +127,63 @@ return [
             // An array of middlewares, overrides the global ones
             'execution_middleware' => null,
         ],
+        'secret' => [
+            'query' => [
+                'product' => \App\GraphQL\Queries\Product\ProductQuery::class,
+                'products' => \App\GraphQL\Queries\Product\ProductsQuery::class,
+
+                'provider' => \App\GraphQL\Queries\Provider\ProviderQuery::class,
+                'providers' => \App\GraphQL\Queries\Provider\ProvidersQuery::class,
+
+                'costPrice' => \App\GraphQL\Queries\CostPrice\CostPriceQuery::class,
+                'costPrices' => \App\GraphQL\Queries\CostPrice\CostPricesQuery::class,
+
+                'sellPrice' => \App\GraphQL\Queries\SellPrice\SellPriceQuery::class,
+                'sellPrices' => \App\GraphQL\Queries\SellPrice\SellPricesQuery::class,
+
+            ],
+            'mutation' => [
+                // ExampleMutation::class,
+                'createProvider' => \App\GraphQL\Mutations\Provider\CreateProviderMutation::class,
+                'createProduct' => \App\GraphQL\Mutations\Product\CreateProductMutation::class,
+                'createCostPrice' => \App\GraphQL\Mutations\CostPrice\CreateCostPriceMutation::class,
+                'createSellPrice' => \App\GraphQL\Mutations\SellPrice\CreateSellPriceMutation::class,
+
+                'updateProvider' => \App\GraphQL\Mutations\Provider\UpdateProviderMutation::class,
+                'updateProduct' => \App\GraphQL\Mutations\Product\UpdateProductMutation::class,
+                'updateCostPrice' => \App\GraphQL\Mutations\CostPrice\UpdateCostPriceMutation::class,
+                'updateSellPrice' => \App\GraphQL\Mutations\SellPrice\UpdateSellPriceMutation::class,
+
+                'deleteProvider' => \App\GraphQL\Mutations\Provider\DeleteProviderMutation::class,
+                'trashdeleteProvider' =>\App\GraphQL\Mutations\Provider\TrashDeleteProviderMutation::class,
+                'restoreProvider' => \App\GraphQL\Mutations\Provider\RestoreProviderMutation::class,
+                'deleteProduct' => \App\GraphQL\Mutations\Product\DeleteProductMutation::class,
+
+                'trashdeleteProduct' => \App\GraphQL\Mutations\Product\TrashDeleteProductMutation::class,
+                'restoreProduct' => \App\GraphQL\Mutations\Product\RestoreProductMutation::class,
+                'deleteCostPrice' => \App\GraphQL\Mutations\CostPrice\DeleteCostPriceMutation::class,
+                'deleteSellPrice' => \App\GraphQL\Mutations\SellPrice\DeleteSellPriceMutation::class,
+
+            ],
+             'types' => [
+                // ExampleType::class,
+                'Product' => \App\GraphQL\Types\ProductType::class,
+                'Provider' => \App\GraphQL\Types\ProviderType::class,
+                'SellPrice' => \App\GraphQL\Types\SellPriceType::class,
+                'CostPrice' => \App\GraphQL\Types\CostPriceType::class,
+            ],
+
+            // Laravel HTTP middleware
+            'middleware' => null,
+
+            // Which HTTP methods to support; must be given in UPPERCASE!
+            'method' => ['GET', 'POST'],
+        ],
+    ],
+
+    'middleware_schema' => [
+        'default' => [],
+        'secret' => ['auth:api'],
     ],
 
     // The global types available to all schemas.

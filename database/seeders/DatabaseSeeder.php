@@ -9,6 +9,7 @@ use App\Models\CostPrice;
 use App\Models\SellPrice;
 use App\Models\User;
 use Database\Factories;
+use DB;
 
 
 
@@ -30,6 +31,14 @@ class DatabaseSeeder extends Seeder
         $sellprices = SellPrice::factory(5)->create();
 
         $users = User::factory(5)->create();
+
+
+        DB::table('features')->insert([
+            'title' =>'trash',
+            'feature' =>'trash',
+            'description' =>'trash',
+            'active_at' => null,
+        ]);
 
         //$this->call(ProviderSeeder::class);
         //$this->call(ProductSeeder::class);
