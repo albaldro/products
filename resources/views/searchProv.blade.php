@@ -47,6 +47,16 @@
                 Trash
             </a>
 
+            <a href="/login" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Login
+            </a>
+
+            <a href="/register" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Register
+            </a>
+
         </nav>
     </aside>
 
